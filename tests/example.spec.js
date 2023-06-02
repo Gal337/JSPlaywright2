@@ -57,6 +57,20 @@ test("Assertions", async ({page}) => {
   await expect(nonExistingElement).not.toBeVisible();
 });
 
+test("Screenshots", async ({page}) => {
+  await page.goto("https://example.com");
+  await page.screenshot({path: 'screenshot.png', fullPage: true});
+});
+
+test.only("Single element screenshot", async ({page}) => {
+  await page.goto("https://example.com");
+  
+  const element = await page.$("h1");
+  await element.screenshot({path: 'single_element.png'});
+})
+
+
+
 //Putting tests into test suite
 test.describe("Test suite example", () => {
   test("Working with inputs", async ({page}) => {
