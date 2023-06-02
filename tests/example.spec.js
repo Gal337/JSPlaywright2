@@ -62,7 +62,7 @@ test("Screenshots", async ({page}) => {
   await page.screenshot({path: 'screenshot.png', fullPage: true});
 });
 
-test.only("Single element screenshot", async ({page}) => {
+test("Single element screenshot", async ({page}) => {
   await page.goto("https://example.com");
   
   const element = await page.$("h1");
@@ -72,7 +72,7 @@ test.only("Single element screenshot", async ({page}) => {
 
 
 //Putting tests into test suite
-test.describe("Test suite example", () => {
+test.describe("First test suite example", () => {
   test("Working with inputs", async ({page}) => {
     await page.goto("https://zero.webappsecurity.com/index.html");
     await page.click("#signin_button");
@@ -101,5 +101,19 @@ test.describe("Test suite example", () => {
   
 });
 
+
+test.describe("Hooks", () => {
+  test.beforeEach(async ({page}) => {
+    awai page.goto("https://www.example.com");
+  })
+  test("Screenshots", async ({page}) => {
+    await page.screenshot({path: 'screenshot.png', fullPage: true});
+  });
+  
+  test("Single element screenshot", async ({page}) => {
+    const element = await page.$("h1");
+    await element.screenshot({path: 'single_element.png'});
+  })
+});
 
 
