@@ -104,7 +104,7 @@ test.describe("First test suite example", () => {
 });
 
 
-test.describe("Hooks", () => {
+test.describe.parallel("Hooks", () => {
   test.beforeEach(async ({page}) => {
     await page.goto("https://www.example.com");
   })
