@@ -1,5 +1,7 @@
 const {test, expect} = require('@playwright/test');
 
+import { loadHomepage, assertTitle } from '../helpers';
+
 test.skip("Selectors", async ({page}) => {
   //text
   await page.click("text=value of selector");
@@ -104,7 +106,7 @@ test.describe("First test suite example", () => {
 
 test.describe("Hooks", () => {
   test.beforeEach(async ({page}) => {
-    awai page.goto("https://www.example.com");
+    await page.goto("https://www.example.com");
   })
   test("Screenshots", async ({page}) => {
     await page.screenshot({path: 'screenshot.png', fullPage: true});
@@ -114,6 +116,11 @@ test.describe("Hooks", () => {
     const element = await page.$("h1");
     await element.screenshot({path: 'single_element.png'});
   })
+});
+
+test.only("Custom helpers", async ({page}) => {
+  await loadHomepage;
+  await assertTitle;
 });
 
 
