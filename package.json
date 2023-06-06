@@ -6,7 +6,8 @@
   "scripts": {
     "tests:chrome": "playwright test --config=playwright.config.js --project=Chromium",
     "tests:firefox": "playwright test --config=playwright.config.js --project=Firefox",
-    "tests:webkit": "playwright test --config=playwright.config.js --project=Webkit"
+    "tests:webkit": "playwright test --config=playwright.config.js --project=Webkit",
+    "tests:e2e": "playwright test --config=e2e.config.js --project=Chromium"
   },
   "repository": {
     "type": "git",
