@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test.describe("Login / Logout Flow", () => {
+test.describe.parallel("Login / Logout Flow", () => {
   //Before hook - to reduce code duplication
   test.beforeEach(async ({page}) => {
     /*URL in the course: https://zero.webappsecurity.com/*/
