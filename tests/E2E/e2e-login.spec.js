@@ -12,7 +12,21 @@ test.describe("Login / Logout Flow", () => {
     await page.type("#user-name", "invalid username");
     await page.type("#password", "invalid password");
     await page.click("#login-button");
+
+    const errorMessage = await page.locator(".error-message-container");
+    await expect(errorMessage).toContainText("Epic sadface: Username and password do not match any user in this service");
   });
   //Positive scenario + logout
+  test("Positive scenario for login + logout", async ({page}) =>{
+    await page.type("#user-name", "standard_user");
+    await page.type("#password", "secret_sauce");
+    await page.click("#login-button");
+    
+    const menuButton = await page.locator("#react-burger-menu-btn");
+    await expect(menuButton).toBeVisible();
+    await menuButton.click();
+    await page.click("#logout_sidebar_link");
+    await expect(page).toHaveURL("https://www.saucedemo.com/");
+  });
 
 });
