@@ -14,7 +14,7 @@ test.describe("Transfer Funds & Make Payments", () => {
     await page.selectOption("#tf_fromAccountId", "2");
     await page.selectOption("#tf_toAccountId", "3");
     await page.type("#tf_amount", "500");
-    await page.type("tf_description", "Test message");
+    await page.type("#tf_description", "Test message");
     await page.click("#btn_submit");
 
     const boardHeader = await page.locator("h2.board-header");
