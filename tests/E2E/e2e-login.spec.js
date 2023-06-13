@@ -1,32 +1,38 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test'
+import { LoginPage } from '../../PageObjects/LoginPage';
 
-test.describe.parallel("Login / Logout Flow", () => {
+test.describe.parallel.only("Login / Logout Flow", () => {
   //Before hook - to reduce code duplication
   test.beforeEach(async ({page}) => {
-    /*URL in the course: https://zero.webappsecurity.com/*/
-    /*Below URL is used for replacement, in case above URL is not working from specific locations*/
-    await page.goto("https://www.saucedemo.com/");
+    const loginPage = new LoginPage(page);
+
+    await loginPage.goTo();
+    //await page.goto("https://zero.webappsecurity.com/");
   });
   //Negative scenario
   test("Negative scenario for login", async ({page}) => {
-    await page.type("#user-name", "invalid username");
-    await page.type("#password", "invalid password");
-    await page.click("#login-button");
+    await page.click("#signin_button");
+    await page.type("#user_login", "invalid username");
+    await page.type("#user_password", "invalid password");
+    await page.click("text=Sign in");
 
-    const errorMessage = await page.locator(".error-message-container");
-    await expect(errorMessage).toContainText("Epic sadface: Username and password do not match any user in this service");
+    const errorMessage = await page.locator(".alert-error");
+    await expect(errorMessage).toContainText("Login and/or password are wrong");
   });
   //Positive scenario + logout
   test("Positive scenario for login + logout", async ({page}) =>{
-    await page.type("#user-name", "standard_user");
-    await page.type("#password", "secret_sauce");
-    await page.click("#login-button");
+    await page.click("#signin_button");
+    await page.type("#user_login", "username");
+    await page.type("#user_password", "password");
+    await page.click("text=Sign in");
+    await page.goBack();
+    await page.click("#onlineBankingMenu");
     
-    const menuButton = await page.locator("#react-burger-menu-btn");
-    await expect(menuButton).toBeVisible();
-    await menuButton.click();
-    await page.click("#logout_sidebar_link");
-    await expect(page).toHaveURL("https://www.saucedemo.com/");
+    const accountSummaryTab = await page.locator("#account_summary_link");
+    await expect(accountSummaryTab).toBeVisible();
+    
+    await page.goto("http://zero.webappsecurity.com/logout.html")
+    await expect(page).toHaveURL("http://zero.webappsecurity.com/index.html");
   });
 
 });
