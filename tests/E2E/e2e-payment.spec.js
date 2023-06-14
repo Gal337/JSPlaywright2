@@ -1,13 +1,18 @@
 import {test, expect} from '@playwright/test'
+import { HomePage } from '../../PageObjects/HomePage'
+import { LoginPage } from '../../PageObjects/LoginPage'
 
-test.describe("New Payment", () => {
+test.describe.only("New Payment", () => {
+  let homePage;
+  let loginPage;
+  
   test.beforeEach(async ({page}) => {
-    await page.goto("http://zero.webappsecurity.com/index.html");
-    await page.click("#signin_button");
-    await page.type("#user_login", "username");
-    await page.type("#user_password", "password");
-    await page.click("text=Sign in");
-    await page.goBack();
+    homePage = new HomePage(page);
+    loginPage = new LoginPage(page);
+
+    await homePage.goTo();
+    await homePage.clickOnSignIn();
+    await loginPage.login("username", "password");
     await page.click("#onlineBankingMenu");
   });
 

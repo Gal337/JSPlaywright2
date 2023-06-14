@@ -1,28 +1,34 @@
 import { test, expect } from '@playwright/test'
+import { HomePage } from '../../PageObjects/HomePage'
+import { LoginPage } from '../../PageObjects/LoginPage'
 
 test.describe("Transfer Funds & Make Payments", () => {
+  let homePage;
+  let loginPage;
+
   test.beforeEach(async ({page}) => {
-    await page.goto("http://zero.webappsecurity.com/index.html");
-    await page.click("#signin_button");
-    await page.type("#user_login", "username");
-    await page.type("#user_password", "password");
-    await page.click("text=Sign in");
+    homePage = new HomePage(page);
+    loginPage = new LoginPage(page);
+
+    await homePage.goTo();
+    await homePage.clickOnSignIn();
+    await loginPage.login("username", "password");
   });
 
   test("Transfer funds", async ({page}) =>{
-    await page.click("#transfer_funds_tab");
-    await page.selectOption("#tf_fromAccountId", "2");
+    await page.click("#transfer_funds_link");
+    await page.selectOption("#tf_fromAccountId", "4");
     await page.selectOption("#tf_toAccountId", "3");
     await page.type("#tf_amount", "500");
     await page.type("#tf_description", "Test message");
     await page.click("#btn_submit");
 
     const boardHeader = await page.locator("h2.board-header");
-    await page.expect(boardHeader).toContainText("Verify");
+    await expect(boardHeader).toContainText("Verify");
     await page.click("#btn_submit");
 
     const message = await page.locator(".alert-success");
-    await page.expect(message).toContainText("You successfully submitted your transaction");
+    await expect(message).toContainText("You successfully submitted your transaction");
   });
 
 });
