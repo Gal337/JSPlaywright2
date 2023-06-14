@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test'
+import { expect } from '@playwright/test'
 
 export class LoginPage {
   // Initializing selectors using constructor
@@ -7,15 +7,11 @@ export class LoginPage {
     this.page = page;
     this.userName = page.locator("#user_login");
     this.password = page.locator("#user_password");
-    //this.signInButton = page.locator("#signin_button");
     this.signInBtn = page.locator("text=Sign in");
     this.errorMessage = page.locator(".alert-error");
   }
   
   // Defining login page methods
-  async goTo() {
-    await this.page.goto("http://zero.webappsecurity.com/");
-  }
   
   async login(username, password) {
     await this.userName.type(username);
