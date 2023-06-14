@@ -13,10 +13,10 @@ test.describe("Currency Exchange", () => {
     homePage.goTo();
     homePage.clickOnSignIn();
     loginPage.login("username", "password");
+    homePage.clickOnBankingMenu();
   });
 
   test("Purchasing foreign currency", async ({page}) => {
-    await page.click("#onlineBankingMenu");
     await page.click("#pay_bills_link");
     await page.click("text=Purchase Foreign Currency");
     await page.selectOption("#pc_currency","EUR");

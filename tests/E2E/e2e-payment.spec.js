@@ -13,7 +13,7 @@ test.describe.only("New Payment", () => {
     await homePage.goTo();
     await homePage.clickOnSignIn();
     await loginPage.login("username", "password");
-    await page.click("#onlineBankingMenu");
+    await homePage.clickOnBankingMenu();
   });
 
   test("Should send new payment", async ({page}) => {

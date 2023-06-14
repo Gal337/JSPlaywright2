@@ -6,6 +6,7 @@ export class HomePage {
     this.searchBox = page.locator("#searchTerm");
     this.signInButton = page.locator("#signin_button");
     this.linkFeedback = page.locator("#feedback");
+    this.bankingMenu = page.locator("#onlineBankingMenu");
   }
 
   async goTo() {
@@ -14,6 +15,10 @@ export class HomePage {
 
   async clickOnSignIn() {
     await this.signInButton.click();
+  }
+
+  async clickOnBankingMenu() {
+    await this.bankingMenu.click();
   }
 
   async clickOnFeedbackLink() {
