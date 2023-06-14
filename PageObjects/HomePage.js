@@ -5,6 +5,7 @@ export class HomePage {
     this.page = page;
     this.searchBox = page.locator("#searchTerm");
     this.signInButton = page.locator("#signin_button");
+    this.linkFeedback = page.locator("#feedback");
   }
 
   async goTo() {
@@ -13,6 +14,10 @@ export class HomePage {
 
   async clickOnSignIn() {
     await this.signInButton.click();
+  }
+
+  async clickOnFeedbackLink() {
+    await this.linkFeedback.click();
   }
 
   async searchFor(phrase) {
