@@ -1,17 +1,22 @@
 import {test, expect} from '@playwright/test'
+import { HomePage } from '../../PageObjects/HomePage'
+import { LoginPage } from '../../PageObjects/LoginPage'
 
 test.describe("Currency Exchange", () => {
+  let homePage;
+  let loginPage;
+
   test.beforeEach(async ({page}) => {
-    await page.goto("http://zero.webappsecurity.com/index.html");
-    await page.click("#signin_button");
-    await page.type("#user_login", "username");
-    await page.type("#user_password", "password");
-    await page.click("text=Sign in");
-    await page.goBack();
-    await page.click("#onlineBankingMenu");
+    homePage = new HomePage(page);
+    loginPage = new LoginPage(page);
+
+    homePage.goTo();
+    homePage.clickOnSignIn();
+    loginPage.login("username", "password");
   });
 
   test("Purchasing foreign currency", async ({page}) => {
+    await page.click("#onlineBankingMenu");
     await page.click("#pay_bills_link");
     await page.click("text=Purchase Foreign Currency");
     await page.selectOption("#pc_currency","EUR");

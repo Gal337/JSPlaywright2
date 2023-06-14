@@ -17,7 +17,7 @@ export class LoginPage {
     await this.userName.type(username);
     await this.password.type(password);
     await this.signInBtn.click();
-    await this.page.waitForLoadState('networkidle');
+    await this.page.goBack();
   }
 
   async assertErrorMsg() {

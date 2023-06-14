@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 import { HomePage } from '../../PageObjects/HomePage'
 import { FeedbackPage } from '../../PageObjects/FeedbackPage';
 
-test.describe.only("Feedback Form", () => {
+test.describe("Feedback Form", () => {
   let homePage;
   let feedbackPage;
   
