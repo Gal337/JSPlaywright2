@@ -10,9 +10,9 @@ test.describe.only("Filter Transactions", () => {
     homePage = new HomePage(page);
     loginPage = new LoginPage(page);
 
-    homePage.goTo();
-    homePage.clickOnSignIn();
-    loginPage.login("username", "password");
+    await homePage.goTo();
+    await homePage.clickOnSignIn();
+    await loginPage.login("username", "password");
   });
 
   test("Verify the results for each account", async ({page}) => {
