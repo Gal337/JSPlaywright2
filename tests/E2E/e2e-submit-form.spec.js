@@ -20,13 +20,7 @@ test.describe.only("Feedback Form", () => {
     await feedbackPage.assertReset();
   });
   //Submit Feedback form
-  test("Submit feedback form", async ({page}) => {
-    /* await page.type("#name", "some name");
-    await page.type("#email", "4testing@gmail.com");
-    await page.type("#subject", "some subject");
-    await page.type("#comment", "some nice comment about the application");
-    await page.click("input[type='submit']");
-    await page.waitForSelector("#feedback-title"); */
+  test("Submit feedback form", async ({page}) => {a
     await feedbackPage.fillForm("name", "randomail@mail.com", "subject goes here", "my message");
     await feedbackPage.submitForm();
     await feedbackPage.feedbackFormSent();
