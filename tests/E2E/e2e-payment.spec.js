@@ -1,14 +1,20 @@
 import {test, expect} from '@playwright/test'
 import { HomePage } from '../../PageObjects/HomePage'
 import { LoginPage } from '../../PageObjects/LoginPage'
+import { PaymentPage } from '../../PageObjects/PaymentPage'
+import { Navbar } from '../../PageObjects/components/Navbar'
 
 test.describe.only("New Payment", () => {
   let homePage;
   let loginPage;
+  let paymentPage;
+  let navbar;
   
   test.beforeEach(async ({page}) => {
     homePage = new HomePage(page);
     loginPage = new LoginPage(page);
+    paymentPage = new PaymentPage(page);
+    navbar = new Navbar(page);
 
     await homePage.goTo();
     await homePage.clickOnSignIn();
@@ -17,18 +23,10 @@ test.describe.only("New Payment", () => {
   });
 
   test("Should send new payment", async ({page}) => {
-    await page.click("#pay_bills_link");
-    await page.selectOption("#sp_payee", "apple");
-    await page.click("#sp_get_payee_details");
-    await page.waitForSelector("#sp_payee_details");
-    await page.selectOption("#sp_account", "6");
-    await page.type("#sp_amount", "4400");
-    await page.type("#sp_date", "2023-06-23");
-    await page.type("#sp_description", "Enjoy your day!");
-    await page.click("#pay_saved_payees");
+    navbar.clickOnTab("Pay Bills");
 
-    const message = await page.locator("#alert_content > span");
-    await expect(message).toBeVisible();
-    await expect(message).toContainText("The payment was successfully submitted");
+    await paymentPage.createPayment();
+    await paymentPage.assertSuccessMessage();
   });
+  
 });
