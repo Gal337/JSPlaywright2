@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test'
+import { test, expect } from '@playwright/test'
 import { HomePage } from '../../PageObjects/HomePage'
 
 test.describe("Search Results", async () => {

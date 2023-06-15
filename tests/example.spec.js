@@ -1,4 +1,4 @@
-const {test, expect} = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 
 import { loadHomepage, assertTitle } from '../utils/helpers';
 
