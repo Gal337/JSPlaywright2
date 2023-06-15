@@ -4,7 +4,7 @@ import { LoginPage } from '../../PageObjects/LoginPage'
 import { PaymentPage } from '../../PageObjects/PaymentPage'
 import { Navbar } from '../../PageObjects/components/Navbar'
 
-test.describe.only("New Payment", () => {
+test.describe("New Payment", () => {
   let homePage;
   let loginPage;
   let paymentPage;
@@ -28,5 +28,5 @@ test.describe.only("New Payment", () => {
     await paymentPage.createPayment();
     await paymentPage.assertSuccessMessage();
   });
-  
+
 });

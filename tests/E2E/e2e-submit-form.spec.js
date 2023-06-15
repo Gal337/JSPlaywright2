@@ -20,7 +20,7 @@ test.describe("Feedback Form", () => {
     await feedbackPage.assertReset();
   });
   //Submit Feedback form
-  test("Submit feedback form", async ({page}) => {a
+  test("Submit feedback form", async ({page}) => {
     await feedbackPage.fillForm("name", "randomail@mail.com", "subject goes here", "my message");
     await feedbackPage.submitForm();
     await feedbackPage.feedbackFormSent();

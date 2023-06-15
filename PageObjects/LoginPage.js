@@ -1,10 +1,12 @@
 import { expect } from '@playwright/test'
+import { AbstractPage } from '../PageObjects/AbstractPage';
 
-export class LoginPage {
+export class LoginPage extends AbstractPage {
   // Initializing selectors using constructor
   constructor(page)
   {
-    this.page = page;
+    //this.page = page;
+    super(page);
     this.userName = page.locator("#user_login");
     this.password = page.locator("#user_password");
     this.signInBtn = page.locator("text=Sign in");
