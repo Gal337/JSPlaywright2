@@ -1,5 +1,3 @@
-
-
 export class AbstractPage {
   constructor(page) {
     this.page = page;

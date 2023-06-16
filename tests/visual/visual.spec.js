@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 
-test.describe.only("Visual Regression Testing example", () => {
+test.describe("Visual Regression Testing example", () => {
   test("Full Page Snapshot", async ({page}) => {
     await page.goto("https://www.example.com");
     expect(await page.screenshot()).toMatchSnapshot("homepage.png");
@@ -11,5 +11,7 @@ test.describe.only("Visual Regression Testing example", () => {
     const pageElement = await page.$("h1");
     expect(await pageElement.screenshot()).toMatchSnapshot("page-title.png");
   });
+
+
 
 })
