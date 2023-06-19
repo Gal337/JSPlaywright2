@@ -9,7 +9,9 @@
     "tests:webkit": "playwright test --config=playwright.config.js --project=Webkit",
     "tests:e2e": "playwright test --config=e2e.config.js --project=Chromium",
     "tests:visual:chrome": "playwright test --config=visual.config.js --project=Chromium",
-    "tests:visual:firefox": "playwright test --config=visual.config.js --project=Firefox"
+    "tests:visual:firefox": "playwright test --config=visual.config.js --project=Firefox",
+    "tests:visual:chrome:update": "playwright test --config=visual.config.js --project=Chromium --update-snapshots",
+    "tests:visual:firefox:update": "playwright test --config=visual.config.js --project=Firefox --update-snapshots"
   },
   "repository": {
     "type": "git",
