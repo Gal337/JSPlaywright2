@@ -22,9 +22,10 @@ test.describe.parallel("API Testing", () => {
 
     expect(response.status()).toBe(200);
     expect(responseBody.data.id).toBe(1);
-    expect(responseBody.data.first_name).toContainText("George");
-    expect(responseBody.data.last_name).toContainText("Bluth");
+    expect(responseBody.data.first_name).toBe("George");
+    expect(responseBody.data.last_name).toBe("Bluth");
     expect(responseBody.data.email).toBeTruthy();
+
     console.log(responseBody);
   });
 
