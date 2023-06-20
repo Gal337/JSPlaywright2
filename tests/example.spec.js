@@ -118,7 +118,7 @@ test.describe.parallel("Hooks", () => {
   })
 });
 
-test.only("Custom helpers", async ({page}) => {
+test("Custom helpers", async ({page}) => {
   await loadHomepage;
   await assertTitle;
 });
