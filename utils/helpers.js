@@ -1,3 +1,4 @@
+/*helpers is used in example.spec.js file*/
 export async function loadHomepage (page) {
   await page.goto("https://www.example.com");
 }

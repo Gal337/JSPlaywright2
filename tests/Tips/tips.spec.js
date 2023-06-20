@@ -1,9 +1,13 @@
 import { test, expect } from '@playwright/test'
+import { getRandomNumber } from '../../utils/data-helpers'
 
 test.describe.only("Tips & Tricks Section", () => {
-  test("TestInfo Object", async ({page}, testInfo) => {
+  test.only("TestInfo Object", async ({page}, testInfo) => {
     await page.goto("http://zero.webappsecurity.com/");
-    console.log(testInfo);
+    //console.log(testInfo);
+
+    let newNumber = await getRandomNumber();
+    console.log(newNumber);
   });
 
   test("Test Skip Browser", async ({page, browserName}) => {
@@ -32,7 +36,7 @@ test.describe.only("Tips & Tricks Section", () => {
     await page.mouse.up();
   });
   
-  test.only("Multiple Browser Tabs inside a browser", async ({browser}) => {
+  test("Multiple Browser Tabs inside a browser", async ({browser}) => {
     const context = await browser.newContext();
     const page1 = await context.newPage();
     const page2 = await context.newPage();
