@@ -44,4 +44,5 @@ test.describe.only("Tips & Tricks Section", () => {
     await page1.waitForTimeout(5000);
   });
 
+
 })
