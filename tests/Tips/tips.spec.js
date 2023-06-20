@@ -32,4 +32,16 @@ test.describe.only("Tips & Tricks Section", () => {
     await page.mouse.up();
   });
   
+  test.only("Multiple Browser Tabs inside a browser", async ({browser}) => {
+    const context = await browser.newContext();
+    const page1 = await context.newPage();
+    const page2 = await context.newPage();
+    const page3 = await context.newPage();
+
+    await page1.goto("http://zero.webappsecurity.com/index.html");
+    await page2.goto("http://zero.webappsecurity.com/index.html");
+    await page3.goto("http://zero.webappsecurity.com/index.html");
+    await page1.waitForTimeout(5000);
+  });
+
 })
