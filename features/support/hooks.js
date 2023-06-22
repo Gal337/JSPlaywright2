@@ -10,7 +10,7 @@ BeforeAll(async function () {
 
 AfterAll(async function () {
   console.log("Close Browser");
-  const browser = await playwright.chromium.launch({headless: false});
+  this.browser = await playwright.chromium.launch({headless: false});
   await this.browser.close();
 });
 
