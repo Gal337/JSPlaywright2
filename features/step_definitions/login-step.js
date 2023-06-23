@@ -21,3 +21,11 @@ Then("I should see the homepage", async function () {
   //await page.waitForSelector(".inventory_list");
   await loginPage.assertUserIsLoggedIn();
 });
+
+Then("I wait for 3 seconds", async function () {
+  await loginPage.pause();
+});
+
+When(/^I fill the login form with "([^"]*)" and "([^"]*)"$/, async function (username, password) {
+  await loginPage.submitLoginWithParameters(username, password);
+});
