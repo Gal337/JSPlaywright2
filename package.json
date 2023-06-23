@@ -12,7 +12,8 @@
     "tests:visual:firefox": "playwright test --config=visual.config.js --project=Firefox",
     "tests:visual:chrome:update": "playwright test --config=visual.config.js --project=Chromium --update-snapshots --reporter=list",
     "tests:visual:firefox:update": "playwright test --config=visual.config.js --project=Firefox --update-snapshots",
-    "tests:api": "playwright test --config=api.config.js --project=Chromium --reporter=list"
+    "tests:api": "playwright test --config=api.config.js --project=Chromium --reporter=list",
+    "report": "node reporter.js" 
   },
   "repository": {
     "type": "git",
